@@ -32,6 +32,14 @@ namespace MedicalSystem.Data
                 .IsUnique();
 
             modelBuilder.Entity<PatientRecord>()
+                .Property(pr => pr.StartDate)
+                .HasColumnType("date");
+
+            modelBuilder.Entity<PatientRecord>()
+                .Property(pr => pr.EndDate)
+                .HasColumnType("date");
+
+            modelBuilder.Entity<PatientRecord>()
                 .HasOne(pr => pr.Patient)
                 .WithMany()
                 .HasForeignKey(pr => pr.PatientId)
