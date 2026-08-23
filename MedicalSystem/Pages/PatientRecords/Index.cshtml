@@ -1,0 +1,65 @@
+@page
+@model MedicalSystem.Pages.PatientRecordPages.IndexModel
+
+@{
+    ViewData["Title"] = "Patient Records";
+}
+
+<h1>Patient Records</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Pacijent
+            </th>
+            <th>
+                Bolest
+            </th>
+            <th>
+                Početak
+            </th>
+            <th>
+                Kraj
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.PatientRecord)
+        {
+            <tr>
+                <td>
+                    @(item.Patient != null
+                        ? $"{item.Patient.FirstName} {item.Patient.LastName}"
+                        : "-")
+                </td>
+
+                <td>
+                    @(item.Disease?.Name ?? "-")
+                </td>
+
+                <td>
+                    @item.StartDate.ToString("dd.MM.yyyy.")
+                </td>
+
+                <td>
+                    @(item.EndDate.HasValue
+                        ? item.EndDate.Value.ToString("dd.MM.yyyy.")
+                        : "-")
+                </td>
+
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

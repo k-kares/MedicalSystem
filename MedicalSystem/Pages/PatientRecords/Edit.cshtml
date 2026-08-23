@@ -1,0 +1,71 @@
+@page
+@model MedicalSystem.Pages.PatientRecordPages.EditModel
+
+@{
+    ViewData["Title"] = "Uredi zapis";
+}
+
+<h1>Uredi zapis</h1>
+
+<h4>Patient Record</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <input type="hidden" asp-for="PatientRecord.Id" />
+
+            <div class="form-group mb-3">
+                <label asp-for="PatientRecord.PatientId" class="control-label">Pacijent</label>
+                <select asp-for="PatientRecord.PatientId"
+                        asp-items="Model.PatientList"
+                        class="form-control">
+                    <option value="">-- Odaberite pacijenta --</option>
+                </select>
+                <span asp-validation-for="PatientRecord.PatientId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="PatientRecord.DiseaseId" class="control-label">Bolest</label>
+                <select asp-for="PatientRecord.DiseaseId"
+                        asp-items="Model.DiseaseList"
+                        class="form-control">
+                    <option value="">-- Odaberite bolest --</option>
+                </select>
+                <span asp-validation-for="PatientRecord.DiseaseId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="PatientRecord.StartDate" class="control-label">Početak</label>
+                <input asp-for="PatientRecord.StartDate"
+                       type="date"
+                       class="form-control" />
+                <span asp-validation-for="PatientRecord.StartDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="PatientRecord.EndDate" class="control-label">Kraj</label>
+                <input asp-for="PatientRecord.EndDate"
+                       type="date"
+                       class="form-control" />
+                <span asp-validation-for="PatientRecord.EndDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Spremi" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="mt-3">
+    <a asp-page="./Index">Natrag na popis</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
