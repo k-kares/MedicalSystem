@@ -50,7 +50,7 @@
                 @Html.DisplayFor(model => item.OIB)
             </td>
             <td>
-                @Html.DisplayFor(model => item.DateOfBirth)
+                    @item.DateOfBirth.ToString("dd.MM.yyyy.")
             </td>
             <td>
                 @Html.DisplayFor(model => item.Gender)

@@ -24,6 +24,10 @@ namespace MedicalSystem.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Patient>()
+                .Property(p => p.DateOfBirth)
+                .HasColumnType("date");
+
+            modelBuilder.Entity<Patient>()
                 .HasIndex(p => p.OIB)
                 .IsUnique();
 
