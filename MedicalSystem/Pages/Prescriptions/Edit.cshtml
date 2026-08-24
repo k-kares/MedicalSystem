@@ -1,0 +1,85 @@
+@page
+@model MedicalSystem.Pages.PrescriptionPages.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Prescription</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Prescription.Id" />
+            <div class="form-group">
+                <label asp-for="Prescription.PatientId" class="control-label"></label>
+                <input asp-for="Prescription.PatientId" class="form-control" />
+                <span asp-validation-for="Prescription.PatientId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prescription.Patient" class="control-label"></label>
+                <input asp-for="Prescription.Patient" class="form-control" />
+                <span asp-validation-for="Prescription.Patient" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prescription.DoctorId" class="control-label"></label>
+                <input asp-for="Prescription.DoctorId" class="form-control" />
+                <span asp-validation-for="Prescription.DoctorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prescription.Doctor" class="control-label"></label>
+                <input asp-for="Prescription.Doctor" class="form-control" />
+                <span asp-validation-for="Prescription.Doctor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prescription.MedicationId" class="control-label"></label>
+                <input asp-for="Prescription.MedicationId" class="form-control" />
+                <span asp-validation-for="Prescription.MedicationId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prescription.Medication" class="control-label"></label>
+                <input asp-for="Prescription.Medication" class="form-control" />
+                <span asp-validation-for="Prescription.Medication" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prescription.Dose" class="control-label"></label>
+                <input asp-for="Prescription.Dose" class="form-control" />
+                <span asp-validation-for="Prescription.Dose" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prescription.DoseUnit" class="control-label"></label>
+                <input asp-for="Prescription.DoseUnit" class="form-control" />
+                <span asp-validation-for="Prescription.DoseUnit" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prescription.Frequency" class="control-label"></label>
+                <input asp-for="Prescription.Frequency" class="form-control" />
+                <span asp-validation-for="Prescription.Frequency" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prescription.StartDate" class="control-label"></label>
+                <input asp-for="Prescription.StartDate" class="form-control" />
+                <span asp-validation-for="Prescription.StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prescription.EndDate" class="control-label"></label>
+                <input asp-for="Prescription.EndDate" class="form-control" />
+                <span asp-validation-for="Prescription.EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

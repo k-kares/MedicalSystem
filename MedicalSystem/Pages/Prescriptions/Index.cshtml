@@ -1,0 +1,79 @@
+@page
+@model MedicalSystem.Pages.PrescriptionPages.IndexModel
+
+@{
+    ViewData["Title"] = "Recepti";
+}
+
+<h1>Recepti</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">Novi recept</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Pacijent</th>
+            <th>Liječnik</th>
+            <th>Lijek</th>
+            <th>Doza</th>
+            <th>Jedinica</th>
+            <th>Učestalost</th>
+            <th>Početak</th>
+            <th>Kraj</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.Prescription)
+        {
+            <tr>
+                <td>
+                    @(item.Patient != null
+                        ? $"{item.Patient.FirstName} {item.Patient.LastName}"
+                        : "-")
+                </td>
+
+                <td>
+                    @(item.Doctor != null
+                        ? $"{item.Doctor.FirstName} {item.Doctor.LastName}"
+                        : "-")
+                </td>
+
+                <td>
+                    @(item.Medication?.Name ?? "-")
+                </td>
+
+                <td>
+                    @item.Dose
+                </td>
+
+                <td>
+                    @item.DoseUnit
+                </td>
+
+                <td>
+                    @item.Frequency
+                </td>
+
+                <td>
+                    @item.StartDate.ToString("dd.MM.yyyy.")
+                </td>
+
+                <td>
+                    @(item.EndDate.HasValue
+                        ? item.EndDate.Value.ToString("dd.MM.yyyy.")
+                        : "-")
+                </td>
+
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -52,6 +52,14 @@ namespace MedicalSystem.Data
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Prescription>()
+                .Property(p => p.StartDate)
+                .HasColumnType("date");
+
+            modelBuilder.Entity<Prescription>()
+                .Property(p => p.EndDate)
+                .HasColumnType("date");
+
+            modelBuilder.Entity<Prescription>()
                 .HasOne(p => p.Patient)
                 .WithMany()
                 .HasForeignKey(p => p.PatientId)
