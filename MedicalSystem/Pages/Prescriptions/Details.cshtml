@@ -2,84 +2,81 @@
 @model MedicalSystem.Pages.PrescriptionPages.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalji recepta";
 }
 
-<h1>Details</h1>
+<h1>Detalji recepta</h1>
 
 <div>
     <h4>Prescription</h4>
     <hr />
+
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Prescription.PatientId)
+        <dt class="col-sm-2">
+            Pacijent
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Prescription.PatientId)
+        <dd class="col-sm-10">
+            @(Model.Prescription.Patient != null
+                ? $"{Model.Prescription.Patient.FirstName} {Model.Prescription.Patient.LastName}"
+                : "-")
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Prescription.Patient)
+
+        <dt class="col-sm-2">
+            Liječnik
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Prescription.Patient)
+        <dd class="col-sm-10">
+            @(Model.Prescription.Doctor != null
+                ? $"{Model.Prescription.Doctor.FirstName} {Model.Prescription.Doctor.LastName}"
+                : "-")
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Prescription.DoctorId)
+
+        <dt class="col-sm-2">
+            Lijek
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Prescription.DoctorId)
+        <dd class="col-sm-10">
+            @(Model.Prescription.Medication?.Name ?? "-")
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Prescription.Doctor)
+
+        <dt class="col-sm-2">
+            Doza
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Prescription.Doctor)
+        <dd class="col-sm-10">
+            @Model.Prescription.Dose
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Prescription.MedicationId)
+
+        <dt class="col-sm-2">
+            Jedinica doze
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Prescription.MedicationId)
+        <dd class="col-sm-10">
+            @Model.Prescription.DoseUnit
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Prescription.Medication)
+
+        <dt class="col-sm-2">
+            Učestalost
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Prescription.Medication)
+        <dd class="col-sm-10">
+            @Model.Prescription.Frequency
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Prescription.Dose)
+
+        <dt class="col-sm-2">
+            Početak
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Prescription.Dose)
+        <dd class="col-sm-10">
+            @Model.Prescription.StartDate.ToString("dd.MM.yyyy.")
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Prescription.DoseUnit)
+
+        <dt class="col-sm-2">
+            Kraj
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Prescription.DoseUnit)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Prescription.Frequency)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Prescription.Frequency)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Prescription.StartDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Prescription.StartDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Prescription.EndDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Prescription.EndDate)
+        <dd class="col-sm-10">
+            @(Model.Prescription.EndDate.HasValue
+                ? Model.Prescription.EndDate.Value.ToString("dd.MM.yyyy.")
+                : "-")
         </dd>
     </dl>
 </div>
+
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Prescription.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Edit" asp-route-id="@Model.Prescription.Id">Uredi</a> |
+    <a asp-page="./Index">Natrag na popis</a>
 </div>

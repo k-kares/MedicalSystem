@@ -23,7 +23,12 @@ public class DetailsModel : PageModel
             return NotFound();
         }
 
-        var prescription = await _context.Prescriptions.FirstOrDefaultAsync(m => m.Id == id);
+        var prescription = await _context.Prescriptions
+             .Include(p => p.Patient)
+             .Include(p => p.Doctor)
+             .Include(p => p.Medication)
+             .FirstOrDefaultAsync(p => p.Id == id);
+
         if (prescription is null)
         {
             return NotFound();
