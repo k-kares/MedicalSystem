@@ -1,4 +1,5 @@
 ﻿using MedicalSystem.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace MedicalSystem.Data;
 
@@ -6,7 +7,8 @@ public static class DbInitializer
 {
     public static void Initialize(ApplicationDbContext context)
     {
-        context.Database.EnsureCreated();
+        //context.Database.EnsureCreated();
+        context.Database.Migrate();
 
         if (context.Doctors.Any())
         {

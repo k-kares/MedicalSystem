@@ -46,9 +46,13 @@
                 <label asp-for="Examination.Type" class="control-label">
                     Vrsta pregleda
                 </label>
-                <input asp-for="Examination.Type"
-                       class="form-control"
-                       placeholder="npr. Kontrolni pregled" />
+
+                <select asp-for="Examination.Type"
+                        asp-items="Html.GetEnumSelectList<MedicalSystem.Models.ExaminationType>()"
+                        class="form-control">
+                    <option value="">-- Odaberite vrstu pregleda --</option>
+                </select>
+
                 <span asp-validation-for="Examination.Type"
                       class="text-danger"></span>
             </div>

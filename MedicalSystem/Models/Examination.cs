@@ -12,7 +12,7 @@
 
         public Doctor? Doctor { get; set; }
 
-        public string Type { get; set; } = string.Empty;
+        public ExaminationType Type { get; set; }
 
         public DateTime ScheduledAt { get; set; }
     }
