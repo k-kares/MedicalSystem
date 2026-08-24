@@ -1,0 +1,65 @@
+@page
+@model MedicalSystem.Pages.ExaminationPages.IndexModel
+
+@{
+    ViewData["Title"] = "Pregledi";
+}
+
+<h1>Pregledi</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">Novi pregled</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Pacijent
+            </th>
+            <th>
+                Liječnik
+            </th>
+            <th>
+                Vrsta pregleda
+            </th>
+            <th>
+                Datum i vrijeme
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.Examination)
+        {
+            <tr>
+                <td>
+                    @(item.Patient != null
+                        ? $"{item.Patient.FirstName} {item.Patient.LastName}"
+                        : "-")
+                </td>
+
+                <td>
+                    @(item.Doctor != null
+                        ? $"{item.Doctor.FirstName} {item.Doctor.LastName}"
+                        : "-")
+                </td>
+
+                <td>
+                    @item.Type
+                </td>
+
+                <td>
+                    @item.ScheduledAt.ToString("dd.MM.yyyy. HH:mm")
+                </td>
+
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Uredi</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Detalji</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Obriši</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

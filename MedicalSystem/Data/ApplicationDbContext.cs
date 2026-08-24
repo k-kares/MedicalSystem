@@ -78,6 +78,10 @@ namespace MedicalSystem.Data
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Examination>()
+                .Property(e => e.ScheduledAt)
+                .HasColumnType("timestamp without time zone");
+
+            modelBuilder.Entity<Examination>()
                 .HasOne(e => e.Patient)
                 .WithMany()
                 .HasForeignKey(e => e.PatientId)

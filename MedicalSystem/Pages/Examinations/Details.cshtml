@@ -1,0 +1,52 @@
+@page
+@model MedicalSystem.Pages.ExaminationPages.DetailsModel
+
+@{
+    ViewData["Title"] = "Detalji pregleda";
+}
+
+<h1>Detalji pregleda</h1>
+
+<div>
+    <h4>Examination</h4>
+    <hr />
+
+    <dl class="row">
+        <dt class="col-sm-2">
+            Pacijent
+        </dt>
+        <dd class="col-sm-10">
+            @(Model.Examination.Patient != null
+                ? $"{Model.Examination.Patient.FirstName} {Model.Examination.Patient.LastName}"
+                : "-")
+        </dd>
+
+        <dt class="col-sm-2">
+            Liječnik
+        </dt>
+        <dd class="col-sm-10">
+            @(Model.Examination.Doctor != null
+                ? $"{Model.Examination.Doctor.FirstName} {Model.Examination.Doctor.LastName}"
+                : "-")
+        </dd>
+
+        <dt class="col-sm-2">
+            Vrsta pregleda
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Examination.Type
+        </dd>
+
+        <dt class="col-sm-2">
+            Datum i vrijeme
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Examination.ScheduledAt.ToString("dd.MM.yyyy. HH:mm")
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Examination.Id">Uredi</a> |
+    <a asp-page="./Index">Natrag na popis</a>
+</div>
