@@ -2,12 +2,11 @@
 @model MedicalSystem.Pages.PatientRecordPages.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Napravi novu bolest";
 }
 
-<h1>Create</h1>
+<h1>Napravi novu bolest</h1>
 
-<h4>PatientRecord</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -44,14 +43,14 @@
                 <span asp-validation-for="PatientRecord.EndDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Napravi" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Index">Natrag na popis</a>
 </div>
 
 @section Scripts {

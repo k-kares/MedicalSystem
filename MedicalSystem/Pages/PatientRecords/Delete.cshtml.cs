@@ -25,7 +25,10 @@ public class DeleteModel : PageModel
             return NotFound();
         }
 
-        var patientrecord = await _context.PatientRecords.FirstOrDefaultAsync(m => m.Id == id);
+        var patientrecord = await _context.PatientRecords
+            .Include(p => p.Patient)
+            .Include(p => p.Disease)
+            .FirstOrDefaultAsync(m => m.Id == id);
         if (patientrecord is null)
         {
             return NotFound();
@@ -45,7 +48,11 @@ public class DeleteModel : PageModel
             return NotFound();
         }
 
-        var patientrecord = await _context.PatientRecords.FindAsync(id);
+        var patientrecord = await _context.PatientRecords
+            .Include(p => p.Patient)
+            .Include(p => p.Disease)
+            .FirstOrDefaultAsync(m => m.Id == id);
+
         if (patientrecord != null)
         {
             PatientRecord = patientrecord;

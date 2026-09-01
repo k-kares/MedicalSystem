@@ -25,7 +25,11 @@ public class DeleteModel : PageModel
             return NotFound();
         }
 
-        var prescription = await _context.Prescriptions.FirstOrDefaultAsync(m => m.Id == id);
+        var prescription = await _context.Prescriptions
+             .Include(p => p.Patient)
+             .Include(p => p.Doctor)
+             .Include(p => p.Medication)
+             .FirstOrDefaultAsync(m => m.Id == id);
         if (prescription is null)
         {
             return NotFound();
@@ -45,7 +49,11 @@ public class DeleteModel : PageModel
             return NotFound();
         }
 
-        var prescription = await _context.Prescriptions.FindAsync(id);
+        var prescription = await _context.Prescriptions
+            .Include(p => p.Patient)
+            .Include(p => p.Doctor)
+            .Include(p => p.Medication)
+            .FirstOrDefaultAsync(m => m.Id == id);
         if (prescription != null)
         {
             Prescription = prescription;

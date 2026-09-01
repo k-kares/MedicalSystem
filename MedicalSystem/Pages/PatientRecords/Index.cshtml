@@ -2,13 +2,13 @@
 @model MedicalSystem.Pages.PatientRecordPages.IndexModel
 
 @{
-    ViewData["Title"] = "Patient Records";
+    ViewData["Title"] = "Povijest bolesti";
 }
 
-<h1>Patient Records</h1>
+<h1>Povijest bolesti</h1>
 
 <p>
-    <a asp-page="Create" class="btn btn-primary">Create New</a>
+    <a asp-page="Create" class="btn btn-primary">Napravi novu bolest</a>
 </p>
 
 <table class="table">
@@ -55,9 +55,9 @@
                 </td>
 
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Uredi</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Detalji</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Obriši</a>
                 </td>
             </tr>
         }

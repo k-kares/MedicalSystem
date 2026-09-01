@@ -2,86 +2,75 @@
 @model MedicalSystem.Pages.PrescriptionPages.DeleteModel
 
 @{
-    ViewData["Title"] = "Delete";
+ViewData["Title"] = "Izbriši recept";
 }
 
-<h1>Delete</h1>
+<h1>Izbriši recept</h1>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Jeste li sigurni da želite izbrisati ovaj recept?</h3>
+
 <div>
-    <h4>MedicalSystem.Models.Prescription</h4>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Prescription.PatientId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Prescription.PatientId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Prescription.Patient)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Prescription.Patient)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Prescription.DoctorId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Prescription.DoctorId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Prescription.Doctor)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Prescription.Doctor)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Prescription.MedicationId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Prescription.MedicationId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Prescription.Medication)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Prescription.Medication)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Prescription.Dose)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Prescription.Dose)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Prescription.DoseUnit)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Prescription.DoseUnit)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Prescription.Frequency)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Prescription.Frequency)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Prescription.StartDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Prescription.StartDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Prescription.EndDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Prescription.EndDate)
-        </dd>
-    </dl>
-    <form method="post">
-        <input type="hidden" asp-for="Prescription.Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-page="./Index">Back to List</a>
-    </form>
+
+<dl class="row">
+    <dt class="col-sm-3">
+        Pacijent
+    </dt>
+    <dd class="col-sm-9">
+        @Model.Prescription.Patient?.FirstName @Model.Prescription.Patient?.LastName
+    </dd>
+
+    <dt class="col-sm-3">
+        Liječnik
+    </dt>
+    <dd class="col-sm-9">
+        @Model.Prescription.Doctor?.FirstName @Model.Prescription.Doctor?.LastName
+    </dd>
+
+    <dt class="col-sm-3">
+        Lijek
+    </dt>
+    <dd class="col-sm-9">
+        @Model.Prescription.Medication?.Name
+    </dd>
+
+    <dt class="col-sm-3">
+        Doza
+    </dt>
+    <dd class="col-sm-9">
+        @Model.Prescription.Dose @Model.Prescription.DoseUnit
+    </dd>
+
+    <dt class="col-sm-3">
+        Učestalost
+    </dt>
+    <dd class="col-sm-9">
+        @Model.Prescription.Frequency
+    </dd>
+
+    <dt class="col-sm-3">
+        Datum početka
+    </dt>
+    <dd class="col-sm-9">
+        @Model.Prescription.StartDate.ToString("dd.MM.yyyy.")
+    </dd>
+
+    <dt class="col-sm-3">
+        Datum završetka
+    </dt>
+    <dd class="col-sm-9">
+        @(Model.Prescription.EndDate.HasValue
+            ? Model.Prescription.EndDate.Value.ToString("dd.MM.yyyy.")
+            : "Nije završeno")
+    </dd>
+</dl>
+
+<form method="post">
+    <input type="hidden" asp-for="Prescription.Id" />
+
+    <input type="submit" value="Izbriši" class="btn btn-danger" />
+    <a asp-page="./Index" class="btn btn-secondary ms-2">Natrag na popis</a>
+</form>
+
+
 </div>

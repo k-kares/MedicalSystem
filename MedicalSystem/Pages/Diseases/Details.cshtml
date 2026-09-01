@@ -2,13 +2,12 @@
 @model MedicalSystem.Pages.DiseasePages.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalji bolesti";
 }
 
-<h1>Details</h1>
+<h1>Detalji bolesti</h1>
 
 <div>
-    <h4>Disease</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -26,6 +25,6 @@
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Disease.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Edit" asp-route-id="@Model.Disease.Id">Uredi</a> |
+    <a asp-page="./Index">Natrag na listu</a>
 </div>

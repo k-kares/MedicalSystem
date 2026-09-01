@@ -2,10 +2,10 @@
 @model MedicalSystem.Pages.PatientPages.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalji";
 }
 
-<h1>Details</h1>
+<h1>Detalji</h1>
 
 <div>
     <h4>Patient</h4>
@@ -56,6 +56,6 @@
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Patient.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Edit" asp-route-id="@Model.Patient.Id">Uredi</a> |
+    <a asp-page="./Index">Natrag na popis</a>
 </div>

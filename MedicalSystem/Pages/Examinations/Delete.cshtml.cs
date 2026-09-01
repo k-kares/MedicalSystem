@@ -25,7 +25,10 @@ public class DeleteModel : PageModel
             return NotFound();
         }
 
-        var examination = await _context.Examinations.FirstOrDefaultAsync(m => m.Id == id);
+        var examination = await _context.Examinations
+            .Include(e => e.Patient)
+            .Include(e => e.Doctor)
+            .FirstOrDefaultAsync(m => m.Id == id);
         if (examination is null)
         {
             return NotFound();
@@ -45,7 +48,10 @@ public class DeleteModel : PageModel
             return NotFound();
         }
 
-        var examination = await _context.Examinations.FindAsync(id);
+        var examination = await _context.Examinations
+            .Include(e => e.Patient)
+            .Include(e => e.Doctor)
+            .FirstOrDefaultAsync(m => m.Id == id);
         if (examination != null)
         {
             Examination = examination;
